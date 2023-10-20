@@ -1,4 +1,4 @@
-package ejemplos;
+package unidad1.ejemplos;
 
 import org.openqa.selenium.By; //crear estrategias de busqueda (ID,Name, Xpath, etc)
 import org.openqa.selenium.JavascriptExecutor; //Scrolling

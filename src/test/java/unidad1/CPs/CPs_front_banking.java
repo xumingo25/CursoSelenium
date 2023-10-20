@@ -1,4 +1,4 @@
-package CPs;
+package unidad1.CPs;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -20,7 +20,7 @@ public class CPs_front_banking {
     @BeforeEach
     public void preCondiciones(){
         //String ruta del driver
-        String rutaDriver = "C:\\Users\\domingo.saavedra\\Desktop\\SeleniumPrimerosPasos\\src\\test\\resources\\drivers\\chromedriver.exe";
+        String rutaDriver = "C:\\Users\\domingo.saavedra\\Documents\\SeleniumRepasoPrueba1\\src\\test\\resources\\drivers\\chromedriver.exe";
 
         //Enlazar el driver como property de windows para el manejo
         //Del navegador
@@ -89,6 +89,44 @@ public class CPs_front_banking {
         String resultadoEsperado = "El Rut ingresado no es válido";
 
         Assertions.assertEquals(resultadoEsperado,resultadoActual);
+    }
+
+    @Test
+    public void CP003_Seleccionar_nacionalidad_Extranjera() throws InterruptedException {
+        By locatorBtnPortate = By.xpath("//button[@id='hi_header_login_a']");
+
+        WebElement btnPortate = driver.findElement(locatorBtnPortate);
+
+        btnPortate.click();
+
+        Thread.sleep(2000); //ESPERA 2 SEGUNDOS
+
+        By locatorLinkHazteCliente = By.id("header_hazte_cliente_banco");
+
+        WebElement linkHazteCliente = driver.findElement(locatorLinkHazteCliente);
+
+        linkHazteCliente.click();
+
+        Thread.sleep(2000); //ESPERA 2 SEGUNDOS
+
+        driver.findElement(By.name("rut")).sendKeys("302432107");
+
+        Thread.sleep(2000); //ESPERA 2 SEGUNDOS
+
+        driver.findElement(By.xpath("//input[@id='nacinalidadExtranjero']")).click();
+
+        By localorNacionalidad = By.id("search-text-Nacionalidad");
+
+        By localorSeleccionNacionalidadVacio = By.xpath("//div[contains(text(),'Selecciona tu nacionalidad')]");
+
+        driver.findElement(localorNacionalidad).click();
+        Thread.sleep(5000); //ESPERA 2 SEGUNDOS
+        //driver.findElement(localorNacionalidad).sendKeys("Cubana");
+        driver.findElement(localorSeleccionNacionalidadVacio).click();
+        Thread.sleep(5000); //ESPERA 2 SEGUNDOS
+        //driver.findElement(localorNacionalidad).click();
+
+
     }
 
     @Test
