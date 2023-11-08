@@ -1,6 +1,7 @@
 package unidad2.utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -119,4 +120,19 @@ public class BaseClass {
         }
         return driver;
     }
+
+    //Scrolling
+    public void ScrollingByPixelDown(int pixeles){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript("window.scrollBy(0,"+pixeles+")"); //Scroll vertically down by 300 pixels
+    }
+
+    public void ScrollingByPixelUP(int pixeles){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript("window.scrollBy(0,"+pixeles+")"); //Scroll vertically down by 300 pixels
+    }
+
+
 }
