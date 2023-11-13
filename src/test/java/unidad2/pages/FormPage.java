@@ -19,7 +19,7 @@ public class FormPage extends BaseClass {
 
     By locatorMail = By.xpath("//input[@name='email']");
     By locatorTelefono = By.xpath("//input[@placeholder='Ej: 1234 5678']");
-    By locatorBtnContinuar = By.xpath("//cns-button[@label='Continuar']");
+    By locatorBtnContinuar = By.id("step1_btn");
     By locatorErrorRutInvalido = By.xpath("//span[contains(text(),'El Rut ingresado')]");
     By locatorErrorProblemaTecnico = By.className("title");
 
