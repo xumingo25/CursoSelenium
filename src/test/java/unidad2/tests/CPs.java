@@ -9,6 +9,7 @@ import unidad2.pages.FormPage;
 import unidad2.pages.HomePage;
 import unidad2.utils.DataDriven;
 import unidad2.utils.ManejoEncoding;
+import unidad2.utils.PropertiesManager;
 
 import java.util.ArrayList;
 
@@ -19,10 +20,10 @@ public class CPs {
     FormPage form;
     ArrayList<String> data; //null
 
-    String browser = "chrome";
-    String propertyDriver = "webdriver.chrome.driver";
-    String rutaDriver = "C:\\Users\\domingo.saavedra\\Documents\\Selenium2Unidad\\src\\test\\resources\\drivers\\chromedriver.exe";
-    String url = "https://sitio.consorcio.cl/";
+    String browser = PropertiesManager.obtenerProperty("browser");
+    String propertyDriver = PropertiesManager.obtenerProperty("propertyDriver");
+    String rutaDriver = PropertiesManager.obtenerProperty("rutaDriver");
+    String url = PropertiesManager.obtenerProperty("url");
 
     @BeforeEach //Pre condiciones para cada test
     public void preCondiciones(){
@@ -38,11 +39,11 @@ public class CPs {
     
     @AfterEach //Pos condiciones para cada test
     public void posCondiciones(){
-        home.cerrarBrowser();
+        //home.cerrarBrowser();
     }
 
     @Test
-    public void CP001_Error_creacion_Cta_problema_tecnico(){
+    public void CP001_Error_creacion_Cta_rut_Invalido(){
         data = DataDriven.getData("CP001_Error_creacion_Cta_problema_tecnico");
         home.clickPortateHazteCliente();
         home.esperarXSegundos(1000);
@@ -53,11 +54,11 @@ public class CPs {
         form.agregarCorreo(data.get(2));
         form.agregarTelefono(data.get(3));
         //Scroll
-        form.ScrollingByPixelDown(500);
+        //form.ScrollingByPixelDown(500);
         form.esperarXSegundos(2000);
-        form.continuar();
+        //form.continuar();
         String resultadoEsperado = data.get(4);
-        Assertions.assertEquals(resultadoEsperado,form.obtenerErrorProblemaTecnico());
+        Assertions.assertEquals(resultadoEsperado,form.obtenerErrorRutInvalido());
     }
     
     

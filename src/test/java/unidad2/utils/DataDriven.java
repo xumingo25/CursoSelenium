@@ -23,7 +23,7 @@ public class DataDriven {
         FileInputStream file = null;
 
         try{
-            file = new FileInputStream("C:\\Users\\domingo.saavedra\\Documents\\Selenium2Unidad\\src\\test\\resources\\data\\Data.xlsx");
+            file = new FileInputStream(PropertiesManager.obtenerProperty("rutaExcel"));
         }catch (FileNotFoundException ex){
             System.out.println("Ha ocurrido un error cargando el archivo :/");
             System.out.println("Error: "+ ex.getMessage());
@@ -45,7 +45,7 @@ public class DataDriven {
         System.out.println("La cantidad de hojas es: "+sheets);
 
             for(int i= 0; i< sheets;i++){
-                if(excel.getSheetName(i).equalsIgnoreCase("SetDatos")){
+                if(excel.getSheetName(i).equalsIgnoreCase(PropertiesManager.obtenerProperty("hojaExcel"))){
                     //Encuentro la hoja
                     XSSFSheet hojaExcel = excel.getSheetAt(i);
 
@@ -61,7 +61,7 @@ public class DataDriven {
                         Cell celdaSeleccionada = celda.next();
 
 
-                        if(celdaSeleccionada.getStringCellValue().equalsIgnoreCase("CasosDePrueba")){
+                        if(celdaSeleccionada.getStringCellValue().equalsIgnoreCase(PropertiesManager.obtenerProperty("CPs"))){
                             //encontramos la columna
                             columna = k++;
                         }
