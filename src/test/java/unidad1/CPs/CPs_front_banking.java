@@ -9,6 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import unidad2.utils.PropertiesManager;
 
 import java.nio.charset.StandardCharsets;
 
@@ -19,12 +20,10 @@ public class CPs_front_banking {
 
     @BeforeEach
     public void preCondiciones(){
-        //String ruta del driver
-        String rutaDriver = "C:\\Users\\domingo.saavedra\\Documents\\SeleniumRepasoPrueba1\\src\\test\\resources\\drivers\\chromedriver.exe";
 
         //Enlazar el driver como property de windows para el manejo
         //Del navegador
-        System.setProperty("webdriver.chrome.driver",rutaDriver);
+        System.setProperty(PropertiesManager.obtenerProperty("propertyDriverChrome"),PropertiesManager.obtenerProperty("rutaDriverChrome"));
 
         //Instanciar un objeto de tipo driver de chrome
         driver = new ChromeDriver();
